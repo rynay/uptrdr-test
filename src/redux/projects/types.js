@@ -1,0 +1,6 @@
+export const CREATE_PROJECT = 'CREATE_PROJECT';
+export const CREATE_NEW_ISSUE = 'CREATE_NEW_ISSUE';
+export const UPDATE_ISSUE = 'UPDATE_ISSUE';
+export const MOVE_ISSUE = 'MOVE_ISSUE';
+export const ADD_COMMENT = 'ADD_COMMENT';
+

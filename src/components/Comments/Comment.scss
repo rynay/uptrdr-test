@@ -1,0 +1,78 @@
+.comments {
+    max-height: 15rem;
+    overflow: auto;
+}
+
+.comment {
+    padding: 0.25rem;
+    position: relative;
+
+    &__container {
+        &--withHover {
+            &:hover {
+                cursor: pointer;
+                .comment__reply {
+                    opacity: 1;
+                    transition: all 0.2s;
+                }
+            }
+        }
+    }
+
+    &__reply {
+        color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+    }
+
+    &__info {
+        display: flex;
+    }
+
+    &__text {
+        font-size: 1.1em;
+        flex: 1;
+        white-space: wrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__date {
+        font-size: 0.8em;
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    &__children {
+        padding-left: 2rem;
+    }
+
+    &__close {
+        background-color: transparent;
+        border: 0;
+        height: 1.5rem;
+        width: 1.5rem;
+        position: absolute;
+        top: -2rem;
+        right: 0;
+        cursor: pointer;
+
+        & > * {
+            height: 1.5rem;
+            width: 0.15rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            transition: all 0.3s;
+        }
+
+        & > :first-child {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        & > :nth-child(2) {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        &:hover > * {
+            background-color: rgba(0, 0, 0, 1);
+        }
+    }
+}

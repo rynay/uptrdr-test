@@ -1,0 +1,43 @@
+.breadCrumbs {
+    display: flex;
+
+    & > * {
+        white-space: nowrap;
+    }
+
+    & > *:last-of-type {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    & > * + * {
+        padding-left: 1.5em;
+        position: relative;
+
+        &::before {
+        content: '';
+        position: absolute;
+        left: 0.4em;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 0.75em;
+        width: 0.75em;
+        background: url('./chevron-right.svg') center center / contain no-repeat;
+        }
+    }
+
+    @media screen and (max-width: 30em) {
+        font-size: 0.8rem;
+    }
+
+    &__link {
+        display: block;
+        text-decoration: none;
+        color: #6e7c87;
+        padding: 0.5em 0;
+
+        &--active {
+            color: #252c32;
+        }
+    }
+}

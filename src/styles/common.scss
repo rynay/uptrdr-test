@@ -1,0 +1,121 @@
+.kanbanContainer {
+    flex: 1;
+    width: 100%;
+    display: grid;
+    gap: 0.625rem;
+    overflow-x: auto;
+
+    @media screen and (min-width: 70rem) {
+        grid-template-columns: repeat(3, minmax(15rem, 30rem));
+    }
+}
+
+.page {
+    padding: 1rem;
+    min-height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  
+    & > * + * {
+      margin-top: 1.5rem;
+    }
+}
+
+.buttonLink {
+    display: inline-block;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.5rem 0.8rem;
+    border-radius: 0.4rem;
+    text-decoration: none;
+    background-color: #4094F7;
+
+    &--primary {
+        background-color: #F2994A;
+    }
+}
+
+.button {
+    display: block;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 0;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 0.4rem;
+    font-weight: 600;
+    text-decoration: none;
+    background-color: #4094F7;
+
+    &--primary {
+        background-color: #F2994A;
+    }
+}
+
+.flexContainer {
+    display: flex;
+    align-items: center;
+  
+    & > * + * {
+      margin-left: 1em;
+    }
+}
+
+.container {
+    max-width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.titleLink {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 600;
+    font-size: 1.7rem;
+}
+
+.projectList {
+    width: 100%;
+
+    & > * + * {
+        margin-top: 1em;
+    }
+
+    li {
+        padding: 1rem;
+        border: 0.1rem solid rgba(0, 0, 0, 0.25);
+        border-radius: 0.5rem;
+    }
+}
+
+.issueLink {
+    color: inherit;
+    text-decoration: none;
+}
+
+.input {
+    padding: 1rem;
+    border: 0.1rem solid rgba(0, 0, 0, 0.25);
+    border-radius: 0.3rem;
+    transition: border 0.2s;
+
+    &:hover {
+        border: 0.1rem solid rgba(0, 0, 0, 1);
+    }
+}
+
+.horizontalLine {
+    height: 0.1rem;
+    width: 100%;
+    background: radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+}

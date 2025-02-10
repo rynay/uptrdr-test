@@ -1,0 +1,16 @@
+.board {
+    background-color: #f6f8f9;
+    border-radius: 0.4rem;
+    padding: 0.5rem;
+  
+    display: flex;
+    flex-direction: column;
+
+    &__list {
+        flex: 1;
+    }
+
+    &__listItem {
+        margin-bottom: 0.6rem;
+    }
+}
