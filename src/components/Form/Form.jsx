@@ -49,7 +49,7 @@ export const Form = ({ type, onSubmit, initialState }) => {
       <div className="form__wrapper">
         <h1 className="form__heading">
         {type === 'project' && 'Create new project'}
-        {(type === 'issue' && !issueId) ? 'Create new issue' : 'Edit issue'}
+        {(type !== 'project' && type === 'issue' && !issueId) ? 'Create new issue' : 'Edit issue'}
         </h1>
         {fields[type].map((field) => (
           field && (
