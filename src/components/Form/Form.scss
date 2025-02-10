@@ -36,7 +36,8 @@
         grid-column: 1 / -1;
     
         &--minified {
-            grid-column: span 1;
+            min-width: 10rem;
+            grid-column: span 2;
         }
     }
 

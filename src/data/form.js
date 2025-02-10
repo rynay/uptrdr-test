@@ -43,7 +43,7 @@ export const getFields = (parentIssues = []) => ({
     } : null,
     {
       name: 'description',
-      placeholder: 'Description',
+      placeholder: 'Description *',
       multiline: true,
       required: true,
     },
