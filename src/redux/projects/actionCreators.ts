@@ -5,7 +5,7 @@ import * as types from './types';
 type CreateProjectPayload = {
   id: string;
   title: string;
-}
+};
 
 export const createProject = (payload: CreateProjectPayload) => ({
   type: types.CREATE_PROJECT,
@@ -13,9 +13,9 @@ export const createProject = (payload: CreateProjectPayload) => ({
 });
 
 type IssuePayload = {
-  id: Project['project']['id'],
-  issue: Issue,
-}
+  id: Project['project']['id'];
+  issue: Issue;
+};
 
 export const createNewIssue = (payload: IssuePayload) => ({
   type: types.CREATE_NEW_ISSUE,
@@ -28,13 +28,13 @@ export const updateIssue = (payload: IssuePayload) => ({
 });
 
 type MoveIssuePayload = {
-  id: Issue['id'],
+  id: Issue['id'];
   state?: IssueBoard[];
   sInd?: number;
   dInd?: number;
   source: DraggableLocation;
   destination: DraggableLocation;
-}
+};
 
 export const moveIssue = (payload: MoveIssuePayload) => ({
   type: types.MOVE_ISSUE,
@@ -46,16 +46,16 @@ type AddCommentPayload = {
   issueId: Issue['id'];
   comment: Comment['text'];
   parentCommentId?: Comment['id'];
-}
+};
 
 export const addComment = (payload: AddCommentPayload) => ({
   type: types.ADD_COMMENT,
   payload,
 });
 
-export type Action = 
-  ReturnType<typeof createProject> |
-  ReturnType<typeof createNewIssue> |
-  ReturnType<typeof updateIssue> |
-  ReturnType<typeof moveIssue> |
-  ReturnType<typeof addComment>
+export type Action =
+  | ReturnType<typeof createProject>
+  | ReturnType<typeof createNewIssue>
+  | ReturnType<typeof updateIssue>
+  | ReturnType<typeof moveIssue>
+  | ReturnType<typeof addComment>;

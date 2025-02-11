@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { DetailedHTMLProps, FC, HTMLAttributes, MouseEvent, useCallback, useEffect } from 'react';
 import styles from './Modal.module.scss';
 
-type Props = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+type Props = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
 export const Modal: FC<Props> = ({ children, ...props }) => {
   const { pathname } = useLocation();

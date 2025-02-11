@@ -1,14 +1,14 @@
 import { createContext, useContext } from 'react';
 
 type ContextProps = {
-  selectedOption: string,
-  changeSelectedOption: VoidFunction | ((value: string) => void),
-}
+  selectedOption: string;
+  changeSelectedOption: VoidFunction | ((value: string) => void);
+};
 
 const defaultContextProps: ContextProps = {
   selectedOption: '',
   changeSelectedOption: () => {},
-}
+};
 
 const SelectContext = createContext(defaultContextProps);
 

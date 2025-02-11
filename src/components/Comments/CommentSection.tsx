@@ -18,23 +18,22 @@ export const CommentSection = () => {
     setInputValue(event.target.value.trim());
   }, []);
 
-  const handleSubmit = useCallback((event: FormEvent) => {
-    event.preventDefault()
-    dispatch(addComment({
-      projectId: projectId!,
-      issueId: issueId!,
-      comment: inputValue,
-      parentCommentId: parentComment?.id,
-    }))
-    setInputValue('');
-    setParentComment(null);
-  }, [
-    dispatch,
-    inputValue,
-    issueId,
-    parentComment,
-    projectId,
-  ])
+  const handleSubmit = useCallback(
+    (event: FormEvent) => {
+      event.preventDefault();
+      dispatch(
+        addComment({
+          projectId: projectId!,
+          issueId: issueId!,
+          comment: inputValue,
+          parentCommentId: parentComment?.id,
+        })
+      );
+      setInputValue('');
+      setParentComment(null);
+    },
+    [dispatch, inputValue, issueId, parentComment, projectId]
+  );
 
   const handleParentCommentReset = useCallback(() => {
     setParentComment(null);
@@ -43,15 +42,15 @@ export const CommentSection = () => {
   return (
     <>
       <div className={styles.comments}>
-        {issue?.comments.map(el => <Comment comment={el} onSelectComment={(el) => setParentComment(el)} />)}
+        {issue?.comments.map((el) => <Comment comment={el} onSelectComment={(el) => setParentComment(el)} />)}
       </div>
       {parentComment && (
-          <>
-            <div className="horizontalLine" />
-            <h2>Reply to:</h2>
-            <Comment comment={parentComment} onCancel={handleParentCommentReset} />
-          </>
-        )}
+        <>
+          <div className="horizontalLine" />
+          <h2>Reply to:</h2>
+          <Comment comment={parentComment} onCancel={handleParentCommentReset} />
+        </>
+      )}
       <form className="flexContainer" onSubmit={handleSubmit}>
         <input
           style={{ flex: 1 }}

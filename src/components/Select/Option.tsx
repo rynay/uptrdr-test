@@ -3,8 +3,8 @@ import { useSelectContext } from './selectContext';
 import styles from './Select.module.scss';
 
 type Props = {
-  value: string,
-} & DetailedHTMLProps<LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>
+  value: string;
+} & DetailedHTMLProps<LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>;
 
 export const Option: FC<Props> = ({ children, value }) => {
   const { changeSelectedOption } = useSelectContext();

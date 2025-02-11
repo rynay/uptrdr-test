@@ -1,5 +1,5 @@
-import { DraggableLocation } from "react-beautiful-dnd";
-import { Comment, Issue, IssueBoard } from "../../types";
+import { DraggableLocation } from 'react-beautiful-dnd';
+import { Comment, Issue, IssueBoard } from '../../types';
 
 export const insertIssue = (arrayOfIssues: Issue[] | undefined, issue: Issue) => {
   const newArray = [...(arrayOfIssues || [])];
@@ -13,7 +13,9 @@ const updateIndexes = (arrayOfIssues: Issue[]) => arrayOfIssues.map((issue, inde
 export const updateStatuses = (boards: IssueBoard[]) => {
   return boards.map((board) => ({
     ...board,
-    items: board.items.map((issue) => (issue.status === board.title ? issue : { ...issue, status: board.title, updated: Date.now() })),
+    items: board.items.map((issue) =>
+      issue.status === board.title ? issue : { ...issue, status: board.title, updated: Date.now() }
+    ),
   }));
 };
 
@@ -23,7 +25,7 @@ type moveInsideAnArrayOfArraysProps = {
   dInd?: number;
   source: DraggableLocation;
   destination: DraggableLocation;
-}
+};
 
 export const moveInsideAnArray = ({ state, source, destination }: moveInsideAnArrayOfArraysProps) => {
   const sInd = +(source?.droppableId || '');
@@ -32,7 +34,7 @@ export const moveInsideAnArray = ({ state, source, destination }: moveInsideAnAr
   const endIndex = destination.index;
 
   const changedList = Array.from(list);
-  const [removed] = changedList.splice((startIndex ?? 0), 1);
+  const [removed] = changedList.splice(startIndex ?? 0, 1);
   changedList.splice(endIndex, 0, removed);
 
   const result = [...state];
@@ -41,13 +43,17 @@ export const moveInsideAnArray = ({ state, source, destination }: moveInsideAnAr
   return result;
 };
 
-export const moveInsideAnArrayOfArrays = (
-  { state, sInd, dInd, source, destination }: moveInsideAnArrayOfArraysProps
-) => {
-  if (!sInd || !dInd) return state;
+export const moveInsideAnArrayOfArrays = ({
+  state,
+  sInd,
+  dInd,
+  source,
+  destination,
+}: moveInsideAnArrayOfArraysProps) => {
+  if (sInd === undefined || dInd === undefined) return state;
   const sourceClone = Array.from(state[sInd].items);
   const destClone = Array.from(state[dInd].items);
-  const [removed] = sourceClone.splice((source?.index || 0), 1);
+  const [removed] = sourceClone.splice(source?.index || 0, 1);
 
   destClone.splice(destination.index, 0, removed);
 
@@ -59,6 +65,6 @@ export const moveInsideAnArrayOfArrays = (
 };
 
 export const addChildToThree = (parentId: Comment['id'], item: Comment) => (el: any) => {
-  if (el.id === parentId) return { ...el, children: [...el.children, item] }
-  else return { ...el, children: el.children.map(addChildToThree(parentId, item)) }
-}
+  if (el.id === parentId) return { ...el, children: [...el.children, item] };
+  else return { ...el, children: el.children.map(addChildToThree(parentId, item)) };
+};

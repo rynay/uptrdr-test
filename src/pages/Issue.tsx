@@ -8,7 +8,7 @@ import { IssueInfo } from '../components/IssueInfo/IssueInfo';
 import { isProjectExist, selectIssue } from '../redux/selectors';
 import { Issue as IssueType } from '../types';
 
-type Props = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+type Props = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
 export const Issue: FC<Props> = (props) => {
   const [isOnEdit, setIsOnEdit] = useState(false);

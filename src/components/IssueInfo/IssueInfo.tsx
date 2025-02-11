@@ -15,7 +15,7 @@ import { Issue } from '../../types';
 type Props = {
   issue: Issue;
   full?: boolean;
-} & DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
+} & DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
 
 export const IssueInfo: FC<Props> = ({ issue, full, children, ...props }) => {
   const { projectId, issueId } = useParams();
@@ -30,7 +30,7 @@ export const IssueInfo: FC<Props> = ({ issue, full, children, ...props }) => {
         <div className={styles.issue__footer}>
           <Priority value={issue.priority} />
           {issue.points && <StoryPoints>{issue.points}</StoryPoints>}
-          {issue.updated && <p>{getDateLabel(issue)}</p>}          
+          {issue.updated && <p>{getDateLabel(issue)}</p>}
           <p className={styles.issue__label}>{issue.info}</p>
         </div>
       </section>
@@ -68,7 +68,11 @@ export const IssueInfo: FC<Props> = ({ issue, full, children, ...props }) => {
           </NavLink>
         ))}
         <span>
-          <Link className={classNames('buttonLink', 'buttonLink--primary')} to={`/projects/${projectId}/new-issue`} state={{ from: location }}>
+          <Link
+            className={classNames('buttonLink', 'buttonLink--primary')}
+            to={`/projects/${projectId}/new-issue`}
+            state={{ from: location }}
+          >
             New child issue
           </Link>
         </span>

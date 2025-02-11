@@ -9,18 +9,15 @@ export const initialState = {
 const localStorageKey = 'test-app';
 const preloadedState = getFromLocalStorage(localStorageKey) || initialState;
 
-export default function rootReducer(
-  state = { projects: {} },
-  action: any
-) {
+export default function rootReducer(state = { projects: {} }, action: any) {
   return {
     projects: projectsReducer(state.projects, action),
   };
 }
 
 export type AppState = {
-  projects: ProjectsState,
-}
+  projects: ProjectsState;
+};
 
 export const store = createStore(rootReducer, preloadedState);
 

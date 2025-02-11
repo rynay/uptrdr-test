@@ -11,7 +11,7 @@ type Props = {
   placeholder: string;
   onChange: (field: string, value: any) => Promise<void> | Promise<FormikErrors<any>>;
   children: ReactNode;
-}
+};
 
 export const Select: FC<Props> = ({ name, children, value, placeholder, onChange }) => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -33,7 +33,7 @@ export const Select: FC<Props> = ({ name, children, value, placeholder, onChange
         <div
           onClick={showDropdownHandler}
           className={classNames(styles.select__text, {
-            [styles.select__text_active]: showDropdown
+            [styles.select__text_active]: showDropdown,
           })}
         >
           {placeholder || value}

@@ -10,7 +10,7 @@ import '../styles/common.scss';
 import classNames from 'classnames';
 import { IssueBoard } from '../types';
 
-type Props = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+type Props = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
 export const IssueBoards: FC<Props> = (props) => {
   const { projectId } = useParams();
@@ -66,4 +66,4 @@ export const IssueBoards: FC<Props> = (props) => {
   ) : (
     <Navigate to={`/projects/${projectId}`} />
   );
-}
+};

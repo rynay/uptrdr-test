@@ -10,7 +10,7 @@ const formatted = (str: string) => str.toLowerCase().replace(/\s+/g, ' ').split(
 
 type Props = {
   setFilteredData: (items: IssueBoard[] | null) => void;
-}
+};
 
 export const Filter: FC<Props> = ({ setFilteredData }) => {
   const [filter, setFilter] = useState('');
@@ -24,21 +24,26 @@ export const Filter: FC<Props> = ({ setFilteredData }) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setFilter(event.target.value);
   };
-  const filterData = useCallback((filter: string, data: IssueBoard[]) => {
-    if (data && filter) {
-      setFilteredData(
-        data.map((board) => ({
-          ...board,
-          items: board.items.filter((issue) =>
-            formatted(filter).every((searchWord) => formatted(issue.title).some((word) => word.includes(searchWord)))
-            || filter.trim() === issue.id
-        ),
-        }))
-      );
-    } else {
-      setFilteredData(null);
-    }
-  }, [setFilteredData]);
+  const filterData = useCallback(
+    (filter: string, data: IssueBoard[]) => {
+      if (data && filter) {
+        setFilteredData(
+          data.map((board) => ({
+            ...board,
+            items: board.items.filter(
+              (issue) =>
+                formatted(filter).every((searchWord) =>
+                  formatted(issue.title).some((word) => word.includes(searchWord))
+                ) || filter.trim() === issue.id
+            ),
+          }))
+        );
+      } else {
+        setFilteredData(null);
+      }
+    },
+    [setFilteredData]
+  );
 
   const filterDataWithDebounce = useCallback(debounce(filterData), []);
 

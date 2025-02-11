@@ -11,7 +11,7 @@ type Props = {
   boardIndex: number;
   board: IssueBoard;
   projectId: string;
-} & DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
+} & DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
 
 export const Board: FC<Props> = ({ boardIndex, board, projectId, ...props }) => {
   return (
@@ -23,7 +23,12 @@ export const Board: FC<Props> = ({ boardIndex, board, projectId, ...props }) => 
             {board.items.map((item) => (
               <Draggable key={item.id} draggableId={item.id} index={item.index}>
                 {(provided) => (
-                  <li className={styles.board__listItem} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                  <li
+                    className={styles.board__listItem}
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                  >
                     <NavLink className="link" to={`/projects/${projectId}/${item.id}`}>
                       <IssueInfo issue={item} />
                     </NavLink>

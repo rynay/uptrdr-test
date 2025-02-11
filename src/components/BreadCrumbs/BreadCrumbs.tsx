@@ -18,13 +18,13 @@ export const BreadCrumbs = () => {
       (route) => route.path === pathname.replace(projectId!, ':projectId').replace(issueId!, ':issueId')
     );
     if (!route) return;
-    setBreadCrumbs(
-      (('pathway' in route) && route.pathway) ?
-        pathname
-          .slice(1)
-          .split('/')
-          .map((_, idx, array) => '/' + array.slice(0, idx + 1).join('/'))
-      : []
+    setBreadCrumbs((state) =>
+      route.path
+        ? pathname
+            .slice(1)
+            .split('/')
+            .map((_, idx, array) => '/' + array.slice(0, idx + 1).join('/'))
+        : state
     );
   }, [pathname, issueId, projectId]);
 
@@ -45,7 +45,7 @@ export const BreadCrumbs = () => {
             <NavLink
               to={route}
               className={classNames(styles.breadCrumbs__link, {
-                [styles.breadCrumbs__link_active]: index === breadCrumbs.length - 1
+                [styles.breadCrumbs__link_active]: index === breadCrumbs.length - 1,
               })}
             >
               {label}

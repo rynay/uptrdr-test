@@ -1,4 +1,3 @@
-import { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { Form } from '../components/Form/Form';

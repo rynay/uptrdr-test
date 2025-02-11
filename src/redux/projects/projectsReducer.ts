@@ -14,8 +14,8 @@ const defaultProject = {
 };
 
 export type ProjectsState = {
-  [id: string]: Project
-} 
+  [id: string]: Project;
+};
 
 export const initialState: ProjectsState = {};
 
@@ -61,8 +61,8 @@ export default function projectsReducer(state = initialState, action: Action) {
       if (targetIssue?.status === issue.status) {
         targetIssue = {
           ...targetIssue,
-          ...issue
-        }
+          ...issue,
+        };
         targetIssue.info = `${priorities[issue.priority]}-${targetIssue.info.split('-')[1]}`;
         return {
           ...state,
@@ -78,13 +78,13 @@ export default function projectsReducer(state = initialState, action: Action) {
         const updatedIssue: Issue = {
           ...issue,
           updated: Date.now(),
-        }
+        };
         const from = state[id].issueBoards.find((board) => board.title === targetIssue?.status)?.items;
         const to = state[id].issueBoards.find((board) => board.title === issue.status)?.items;
         const newTo = insertIssue(to, updatedIssue);
         let newFrom = [...(from || [])];
         if (targetIssue?.index) newFrom.splice(targetIssue?.index, 1);
-        
+
         return {
           ...state,
           [id]: {
@@ -111,6 +111,7 @@ export default function projectsReducer(state = initialState, action: Action) {
       });
 
       const newBoards = updateStatuses(modifiedBoard);
+
       return {
         ...state,
         [id]: {
@@ -120,14 +121,11 @@ export default function projectsReducer(state = initialState, action: Action) {
       };
     }
     case types.ADD_COMMENT: {
-      const {
-        projectId,
-        issueId,
-        comment,
-        parentCommentId
-      } = action.payload;
+      const { projectId, issueId, comment, parentCommentId } = action.payload;
 
-      const targetIssue = state[projectId].issueBoards.flatMap((board) => board.items).find((item) => item.id === issueId);
+      const targetIssue = state[projectId].issueBoards
+        .flatMap((board) => board.items)
+        .find((item) => item.id === issueId);
       let updatedIssue: Issue;
 
       if (!targetIssue) return state;
@@ -135,13 +133,15 @@ export default function projectsReducer(state = initialState, action: Action) {
       if (parentCommentId) {
         updatedIssue = {
           ...targetIssue,
-          comments: targetIssue?.comments.map(addChildToThree(parentCommentId, {
-            id: uuidv4(),
-            text: comment,
-            children: [],
-            created: Date.now(),
-          }))
-        }
+          comments: targetIssue?.comments.map(
+            addChildToThree(parentCommentId, {
+              id: uuidv4(),
+              text: comment,
+              children: [],
+              created: Date.now(),
+            })
+          ),
+        };
       } else {
         updatedIssue = {
           ...targetIssue,
@@ -152,9 +152,9 @@ export default function projectsReducer(state = initialState, action: Action) {
               text: comment,
               children: [],
               created: Date.now(),
-            }
-          ]
-        }
+            },
+          ],
+        };
       }
       return {
         ...state,

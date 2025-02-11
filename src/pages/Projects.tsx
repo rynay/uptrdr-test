@@ -9,7 +9,7 @@ export const Projects = () => {
 
   return (
     <div className="container">
-      <Link className={classNames('buttonLink', 'buttonLink--primary')}  to={`/new-project`}>
+      <Link className={classNames('buttonLink', 'buttonLink--primary')} to={`/new-project`}>
         Create a new project
       </Link>
       <ul className="projectList">

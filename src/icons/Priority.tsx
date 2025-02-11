@@ -1,16 +1,9 @@
-import { DetailedHTMLProps, FC, HTMLAttributes } from "react";
+import { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
 
-type Props = DetailedHTMLProps<HTMLAttributes<SVGSVGElement>, SVGSVGElement>
+type Props = DetailedHTMLProps<HTMLAttributes<SVGSVGElement>, SVGSVGElement>;
 
 export const Critical: FC<Props> = (props) => (
-  <svg
-    width="11"
-    height="16"
-    viewBox="0 0 11 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+  <svg width="11" height="16" viewBox="0 0 11 16" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -21,14 +14,7 @@ export const Critical: FC<Props> = (props) => (
 );
 
 export const Major: FC<Props> = (props) => (
-  <svg
-    width="12"
-    height="13"
-    viewBox="0 0 12 13"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+  <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -39,14 +25,7 @@ export const Major: FC<Props> = (props) => (
 );
 
 export const Normal: FC<Props> = (props) => (
-  <svg
-    width="11"
-    height="16"
-    viewBox="0 0 11 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+  <svg width="11" height="16" viewBox="0 0 11 16" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -57,14 +36,7 @@ export const Normal: FC<Props> = (props) => (
 );
 
 export const Minor: FC<Props> = (props) => (
-  <svg
-    width="13"
-    height="13"
-    viewBox="0 0 13 13"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -75,14 +47,7 @@ export const Minor: FC<Props> = (props) => (
 );
 
 export const Unknown: FC<Props> = (props) => (
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
