@@ -19,16 +19,16 @@
         background-color: rgb(255, 255, 255);
         border-radius: 0.5rem;
         
-        max-width: 90vw;
-        max-height: 90vh;
-        min-width: 60vw;
-        min-height: 60vh;
+        width: 90vw;
+        height: 90vh;
 
         overflow: auto;
 
         @media screen and (min-width: 80rem) {
             min-width: 60rem;
             min-height: 30rem;
+            width: initial;
+            height: initial;
         }
     }
 
