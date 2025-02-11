@@ -65,8 +65,8 @@ export const FileUploader: FC<Props> = ({
     }
       <div className={styles.fileUploader__filePreviewContainer}>
         <div className={styles.fileUploader__filePreviewList}>
-          {files.map((file, index) => {
-            let isImageFile = file?.type.split("/")[0] === "image";
+          {files?.map((file, index) => {
+            let isImageFile = file?.type?.split("/")[0] === "image";
             return (
               <div className={styles.fileUploader__previewContainer} key={file.name}>
                 <div>
