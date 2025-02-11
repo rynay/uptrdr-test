@@ -1,0 +1,49 @@
+.issue {
+    width: 100%;
+    border: 1px solid #ccc;
+    background-color:#fff;
+    border-radius: 0.4rem;
+    padding: 1.1em;
+
+    &_full {
+        border: 0;
+        background-color: transparent;
+    }
+  
+    & > * + * {
+      margin-top: 0.9rem;
+    }
+
+    &__title {
+        font-size: 1rem;
+        font-weight: 400;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &_full {
+            font-size: 1.7rem;
+            font-weight: 600;        
+        }
+    }
+
+    &__description {
+        font-weight: 600;
+        font-size: 1.2rem;
+        line-height: 2rem;
+        color: #303336;
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    &__label {
+        color: #6e7c87;
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
