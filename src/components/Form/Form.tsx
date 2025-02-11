@@ -10,10 +10,12 @@ import { Option } from '../Select/Option';
 import { IssueInfo } from '../IssueInfo/IssueInfo';
 import styles from './Form.module.scss';
 import { Issue } from '../../types';
+import { FileUploader } from '../FileUploader/FileUploader';
+import localforage from 'localforage';
 
 type Props = {
   type: keyof ReturnType<(typeof form)['getFields']>;
-  initialState?: Issue;
+  initialState?: Partial<Issue>;
   onSubmit: (values: Issue) => void;
 };
 
@@ -38,14 +40,22 @@ export const Form: FC<Props> = ({ type, onSubmit, initialState }) => {
   const formik = useFormik({
     initialValues: {
       ...Object.fromEntries(
-        fields[type].map((el) => [el?.name, initialState?.[(el?.name as keyof typeof initialState) || ''] || ''])
+        fields[type].map((el) => [
+          el?.name,
+          initialState?.[(el?.name as keyof typeof initialState) || ''] || '']
+        )
       ),
       ...(parentId && { parentIssue: parentId }),
     },
     onSubmit: (values) => {
+      values.files?.forEach(async (file: File) => {
+        await localforage.setItem(file.name, file);
+      })
+
       onSubmit({
         ...(initialState || {}),
         ...Object.fromEntries(Object.entries(values).filter(([_, value]) => value)),
+        fileIds: values.files?.map((el: File) => el.name),
       } as Issue);
     },
   });
@@ -100,16 +110,27 @@ export const Form: FC<Props> = ({ type, onSubmit, initialState }) => {
                     </Select>
                   </div>
                 ) : (
-                  <input
-                    {...field}
-                    className={classNames(styles.form__input, {
-                      [styles.form__input_minified]: 'minified' in field && field.minified,
-                    })}
-                    key={field.name}
-                    id={field.name}
-                    value={formik.values[field.name]}
-                    onChange={formik.handleChange}
-                  />
+                  field.name === 'files' ? (
+                    !Boolean(issueId?.toString()) && <div className="container" style={{ gridColumn: '1 / -1' }} >
+                      <FileUploader
+                        label={field.name}
+                        files={formik.values[field.name]}
+                        accept=".jpg,.png,.jpeg"
+                        updateFiles={(files: File[]) => formik.setFieldValue(field.name, files)}
+                      />
+                    </div>
+                  ) : (
+                    <input
+                      {...field}
+                      className={classNames(styles.form__input, {
+                        [styles.form__input_minified]: 'minified' in field && field.minified,
+                      })}
+                      key={field.name}
+                      id={field.name}
+                      value={formik.values[field.name]}
+                      onChange={formik.handleChange}
+                    />
+                  )
                 )}
               </Fragment>
             )

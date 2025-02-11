@@ -36,17 +36,20 @@ export const getFields = (parentIssues: string[] = []) => ({
       minified: 'minified',
       options: ['Queue', 'Development', 'Done'],
     },
-    parentIssues.length
-      ? {
-          name: 'parentIssue',
-          placeholder: 'Parent Issue',
-          options: parentIssues,
-        }
-      : null,
     {
       name: 'description',
       placeholder: 'Description *',
       required: true,
     },
+    {
+      name: 'files',
+    },
+    parentIssues.length
+    ? {
+        name: 'parentIssue',
+        placeholder: 'Parent Issue',
+        options: parentIssues,
+      }
+    : null,
   ],
 });

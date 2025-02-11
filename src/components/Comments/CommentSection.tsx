@@ -21,11 +21,12 @@ export const CommentSection = () => {
   const handleSubmit = useCallback(
     (event: FormEvent) => {
       event.preventDefault();
+      if (!inputValue.trim()) return;
       dispatch(
         addComment({
           projectId: projectId!,
           issueId: issueId!,
-          comment: inputValue,
+          comment: inputValue.trim(),
           parentCommentId: parentComment?.id,
         })
       );

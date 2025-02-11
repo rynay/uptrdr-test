@@ -9,8 +9,10 @@ import { selectChildIssues, selectIssue } from '../../redux/selectors';
 import { CommentSection } from '../Comments/CommentSection';
 import { getDateLabel } from './helpers';
 import styles from './IssueInfo.module.scss';
-import { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
+import { DetailedHTMLProps, FC, HTMLAttributes, useEffect, useMemo, useState } from 'react';
 import { Issue } from '../../types';
+import { FileUploader } from '../FileUploader/FileUploader';
+import localforage from 'localforage';
 
 type Props = {
   issue: Issue;
@@ -22,6 +24,18 @@ export const IssueInfo: FC<Props> = ({ issue, full, children, ...props }) => {
   const location = useLocation();
   const childIssues = useSelector(selectChildIssues(projectId!, issueId!));
   const parentIssue = useSelector(selectIssue(projectId!, issue?.parentIssue));
+  const [files, setFiles] = useState<File[]>([]);
+
+  useEffect(() => {
+    let result: File[] = [];
+    issue.fileIds?.forEach(async (id) => {
+      const value: File | null = await localforage.getItem(id, (_, val) => val);
+      if (value) {
+        result.push(value)
+      }
+    setFiles(result);
+  })
+  }, [issue.fileIds])
 
   if (!full)
     return (
@@ -51,6 +65,9 @@ export const IssueInfo: FC<Props> = ({ issue, full, children, ...props }) => {
       </div>
       <h2>Description:</h2>
       <p className={styles.issue__description}>{issue.description}</p>
+      <FileUploader
+        files={files}
+      />
       <div className="horizontalLine" />
       <div className="column">
         {parentIssue && (

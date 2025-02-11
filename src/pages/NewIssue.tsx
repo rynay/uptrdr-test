@@ -21,5 +21,5 @@ export const NewIssue = () => {
     navigate(`/projects/${projectId}`);
   };
 
-  return projectExists ? <Form type="issue" onSubmit={onSubmit} /> : <Navigate to={`/projects/${projectId}`} />;
+  return projectExists ? <Form type="issue" onSubmit={onSubmit} initialState={{ files: [] }} /> : <Navigate to={`/projects/${projectId}`} />;
 };

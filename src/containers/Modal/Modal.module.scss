@@ -24,6 +24,8 @@
         min-width: 60vw;
         min-height: 60vh;
 
+        overflow: auto;
+
         @media screen and (min-width: 80rem) {
             min-width: 60rem;
             min-height: 30rem;

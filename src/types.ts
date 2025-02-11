@@ -16,6 +16,8 @@ export type Issue = {
   comments: Comment[];
   droppableId?: string;
   parentIssue: Issue['id'];
+  fileIds?: string[];
+  files?: File[];
 };
 
 export type Comment = {
