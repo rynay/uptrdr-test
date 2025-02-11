@@ -6,7 +6,7 @@
     overflow-x: auto;
 
     @media screen and (min-width: 70rem) {
-        grid-template-columns: repeat(3, minmax(15rem, 30rem));
+        grid-template-columns: repeat(3, minmax(15rem, 1fr));
     }
 }
 
