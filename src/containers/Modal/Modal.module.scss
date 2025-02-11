@@ -27,8 +27,11 @@
         @media screen and (min-width: 80rem) {
             min-width: 60rem;
             min-height: 30rem;
-            width: initial;
-            height: initial;
+            width: 80vw;
+            max-height: 90vh;
+            max-width: 70rem;
+            // width: initial;
+            // height: initial;
         }
     }
 
